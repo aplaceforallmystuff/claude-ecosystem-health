@@ -1,5 +1,10 @@
 # claude-ecosystem-health
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Claude Code](https://img.shields.io/badge/Claude_Code-Skill-blue)](https://docs.anthropic.com/en/docs/claude-code)
+
+![Architecture](docs/images/architecture-diagram.png)
+
 Detect drift between interconnected Claude Code components: skills, agents, MCP servers, vault paths, CLI tools, and configuration policies.
 
 **The problem:** Complex Claude Code setups have dozens of skills, agents, and commands that reference each other by name, hardcode vault paths, and depend on MCP servers being configured. When something gets renamed, archived, or reconfigured, nothing detects the ripple effects. References break silently.
