@@ -114,12 +114,7 @@ The Read tool truncates large files, causing false positives (phantom servers th
 
 ## Lessons from Production
 
-This skill was battle-tested on a production Claude Code setup with 119 skills, 47 agents, 71 commands, and 17 MCP servers. Key findings from the first run:
-
-- **11 real issues found** on first run (broken paths, phantom MCP tools, wrong skill names)
-- **4 false positives** from `.claude.json` being too large to read (fixed by using `jq`)
-- **55 configuration drift warnings** from CLI-over-MCP policy violations
-- **2 false positives** in model field check from matching inside code block examples
+This skill was battle-tested on a large production Claude Code setup. The first run surfaced genuine issues — broken paths, phantom MCP tools, stale skill references — alongside a handful of false positives that led to the `jq` approach for config parsing and the code-block filtering in model checks.
 
 The Pitfalls & Lessons Learned section in SKILL.md documents every issue encountered during production use so you can avoid the same traps.
 
@@ -146,6 +141,4 @@ MIT - see [LICENSE](LICENSE)
 
 ## Author
 
-Jim Christian ([@aplaceforallmystuff](https://github.com/aplaceforallmystuff))
-
-Built as part of the [Cerebro](https://jimchristian.net) personal AI infrastructure project.
+[@aplaceforallmystuff](https://github.com/aplaceforallmystuff)
