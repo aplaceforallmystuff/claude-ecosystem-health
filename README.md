@@ -26,35 +26,57 @@ Detect drift between interconnected Claude Code components: skills, agents, MCP 
 ## Requirements
 
 - [Claude Code](https://docs.anthropic.com/en/docs/claude-code) installed and configured
-- `jq` installed (for parsing `.claude.json` — `brew install jq` on macOS)
+- `jq` installed (for parsing `.claude.json` -- `brew install jq` on macOS)
 - Skills/agents/commands in `~/.claude/` directory structure
 
 ## Installation
 
-### Option 1: Copy the skill file
+### Option 1: Installer script
 
 ```bash
-mkdir -p ~/.claude/skills/ecosystem-health
-cp SKILL.md ~/.claude/skills/ecosystem-health/SKILL.md
+git clone https://github.com/aplaceforallmystuff/claude-ecosystem-health.git
+cd claude-ecosystem-health
+./install.sh
 ```
 
-### Option 2: Clone and symlink
+### Option 2: Manual copy
+
+```bash
+git clone https://github.com/aplaceforallmystuff/claude-ecosystem-health.git
+cp -r claude-ecosystem-health/skills/ecosystem-health ~/.claude/skills/
+```
+
+### Option 3: Clone and symlink
 
 ```bash
 git clone https://github.com/aplaceforallmystuff/claude-ecosystem-health.git ~/Dev/claude-ecosystem-health
-mkdir -p ~/.claude/skills/ecosystem-health
-ln -s ~/Dev/claude-ecosystem-health/SKILL.md ~/.claude/skills/ecosystem-health/SKILL.md
+ln -s ~/Dev/claude-ecosystem-health/skills/ecosystem-health ~/.claude/skills/ecosystem-health
 ```
+
+## Project Structure
+
+```
+claude-ecosystem-health/
+  install.sh                              # Installer script
+  skills/
+    ecosystem-health/
+      SKILL.md                            # Main skill (lean, links to references)
+      references/
+        checks.md                         # Detailed check implementations (7 checks)
+        pitfalls.md                       # Lessons learned from production runs
+```
+
+The skill uses **progressive disclosure**: the main SKILL.md is concise and links to reference files for detailed check procedures and pitfalls. This keeps the skill lean for Claude's context window while preserving all the operational detail.
 
 ## Setup
 
-After installation, customize the skill for your environment. Open `SKILL.md` and update:
+After installation, customize the skill for your environment. The files contain placeholder patterns that need updating:
 
-1. **Vault paths** (Check 1) — replace placeholder paths with your actual vault location
-2. **CLI tools** (Check 4) — add the CLI tools your setup depends on
-3. **CLI-over-MCP policies** (Check 5) — define which MCP tools have CLI replacements in your setup
-4. **Report output path** — set where health reports should be saved
-5. **MCP server aliases** (Check 3) — list any proxy MCP servers (e.g., Docker-based servers that wrap multiple APIs)
+1. **Vault paths** (Check 1 in `references/checks.md`) -- replace placeholder paths with your actual vault location
+2. **CLI tools** (Check 4) -- add the CLI tools your setup depends on
+3. **CLI-over-MCP policies** (Check 5) -- define which MCP tools have CLI replacements in your setup
+4. **Report output path** -- set where health reports should be saved
+5. **MCP server aliases** (Check 3) -- list any proxy MCP servers (e.g., Docker-based servers that wrap multiple APIs)
 
 ## Usage
 
@@ -114,16 +136,16 @@ The Read tool truncates large files, causing false positives (phantom servers th
 
 ## Lessons from Production
 
-This skill was battle-tested on a large production Claude Code setup. The first run surfaced genuine issues — broken paths, phantom MCP tools, stale skill references — alongside a handful of false positives that led to the `jq` approach for config parsing and the code-block filtering in model checks.
+This skill was battle-tested on a large production Claude Code setup. The first run surfaced genuine issues -- broken paths, phantom MCP tools, stale skill references -- alongside a handful of false positives that led to the `jq` approach for config parsing and the code-block filtering in model checks.
 
-The Pitfalls & Lessons Learned section in SKILL.md documents every issue encountered during production use so you can avoid the same traps.
+The `references/pitfalls.md` file documents every issue encountered during production use so you can avoid the same traps.
 
 ## When to Run
 
 | Cadence | Mode | Use Case |
 |---------|------|----------|
-| Weekly | `--quick` | Part of weekly review — catches critical drift fast |
-| Monthly | Full | First review of each month — includes staleness and orphan checks |
+| Weekly | `--quick` | Part of weekly review -- catches critical drift fast |
+| Monthly | Full | First review of each month -- includes staleness and orphan checks |
 | After changes | `--check [name]` | After renaming, archiving, or reconfiguring anything |
 | Debugging | `--check [name]` | When something "used to work" but stopped |
 
@@ -131,9 +153,9 @@ The Pitfalls & Lessons Learned section in SKILL.md documents every issue encount
 
 This skill complements but doesn't replace:
 
-- **Inventory/sync tools** — count and catalog everything (this skill validates health)
-- **MCP maintenance tools** — manage individual servers (this skill detects which need attention)
-- **Upgrade tools** — track Claude Code releases (this skill detects internal ecosystem drift)
+- **Inventory/sync tools** -- count and catalog everything (this skill validates health)
+- **MCP maintenance tools** -- manage individual servers (this skill detects which need attention)
+- **Upgrade tools** -- track Claude Code releases (this skill detects internal ecosystem drift)
 
 ## License
 
