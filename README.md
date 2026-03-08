@@ -31,7 +31,13 @@ Detect drift between interconnected Claude Code components: skills, agents, MCP 
 
 ## Installation
 
-### Option 1: Installer script
+### Option 1: Skills CLI
+
+```bash
+npx skills add aplaceforallmystuff/claude-ecosystem-health
+```
+
+### Option 2: Installer script
 
 ```bash
 git clone https://github.com/aplaceforallmystuff/claude-ecosystem-health.git
@@ -39,14 +45,14 @@ cd claude-ecosystem-health
 ./install.sh
 ```
 
-### Option 2: Manual copy
+### Option 3: Manual copy
 
 ```bash
 git clone https://github.com/aplaceforallmystuff/claude-ecosystem-health.git
 cp -r claude-ecosystem-health/skills/ecosystem-health ~/.claude/skills/
 ```
 
-### Option 3: Clone and symlink
+### Option 4: Clone and symlink
 
 ```bash
 git clone https://github.com/aplaceforallmystuff/claude-ecosystem-health.git ~/Dev/claude-ecosystem-health
@@ -149,13 +155,19 @@ The `references/pitfalls.md` file documents every issue encountered during produ
 | After changes | `--check [name]` | After renaming, archiving, or reconfiguring anything |
 | Debugging | `--check [name]` | When something "used to work" but stopped |
 
-## Related Tools
+## Related Skills
+
+Part of the [aplaceforallmystuff](https://skills.sh/aplaceforallmystuff) skills collection:
+
+- **[creation-guard](https://github.com/aplaceforallmystuff/claude-creation-guard)** — Prevent duplicate artifacts before creating new ones
+- **[lessons-learned](https://github.com/aplaceforallmystuff/claude-lessons-learned)** — Structured retrospectives that implement fixes
+- **[rfu-audit](https://github.com/aplaceforallmystuff/claude-rfu-audit)** — 11-gate utility validation before investing effort
 
 This skill complements but doesn't replace:
 
-- **Inventory/sync tools** -- count and catalog everything (this skill validates health)
-- **MCP maintenance tools** -- manage individual servers (this skill detects which need attention)
-- **Upgrade tools** -- track Claude Code releases (this skill detects internal ecosystem drift)
+- **Inventory/sync tools** — count and catalog everything (this skill validates health)
+- **MCP maintenance tools** — manage individual servers (this skill detects which need attention)
+- **Upgrade tools** — track Claude Code releases (this skill detects internal ecosystem drift)
 
 ## License
 
