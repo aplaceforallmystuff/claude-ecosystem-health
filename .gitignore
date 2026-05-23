@@ -11,3 +11,8 @@ Thumbs.db
 
 # Node (if someone uses npm tooling)
 node_modules/
+
+# Environment files
+.env
+.env.local
+.env.*.local
