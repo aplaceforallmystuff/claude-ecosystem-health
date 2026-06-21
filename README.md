@@ -2,6 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Claude Code](https://img.shields.io/badge/Claude_Code-Skill-blue)](https://docs.anthropic.com/en/docs/claude-code)
+[![Security Scan](https://img.shields.io/endpoint?url=https://mcpampel.com/badge/aplaceforallmystuff/claude-ecosystem-health.json)](https://mcpampel.com/repo/aplaceforallmystuff/claude-ecosystem-health)
 
 ![Architecture](docs/images/architecture-diagram.png)
 
