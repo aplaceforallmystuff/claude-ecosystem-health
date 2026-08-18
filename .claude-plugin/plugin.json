@@ -1,0 +1,6 @@
+{
+  "name": "claude-ecosystem-health",
+  "description": "Detect drift between Claude Code skills, agents, MCP servers, and CLI tools. 7 severity-scored diagnostic checks.",
+  "version": "1.0.0",
+  "author": { "name": "Jim Christian", "email": "hello@jimchristian.net" }
+}
