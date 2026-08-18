@@ -32,7 +32,7 @@ Detect drift between interconnected Claude Code components: skills, agents, MCP 
 ```bash
 # In Claude Code:
 /plugin marketplace add aplaceforallmystuff/marketplace
-/plugin install claude-ecosystem-health@jim-christian
+/plugin install claude-ecosystem-health@aplaceforallmystuff
 ```
 
 <details>
