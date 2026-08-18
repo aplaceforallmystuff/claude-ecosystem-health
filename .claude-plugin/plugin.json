@@ -1,6 +1,21 @@
 {
   "name": "claude-ecosystem-health",
+  "displayName": "Ecosystem Health",
   "description": "Detect drift between Claude Code skills, agents, MCP servers, and CLI tools. 7 severity-scored diagnostic checks.",
   "version": "1.0.0",
-  "author": { "name": "Jim Christian", "email": "hello@jimchristian.net" }
+  "author": {
+    "name": "Jim Christian",
+    "email": "hello@jimchristian.net",
+    "url": "https://jimchristian.net"
+  },
+  "homepage": "https://github.com/aplaceforallmystuff/claude-ecosystem-health#readme",
+  "repository": "https://github.com/aplaceforallmystuff/claude-ecosystem-health",
+  "license": "MIT",
+  "keywords": [
+    "diagnostics",
+    "drift",
+    "maintenance",
+    "health-check",
+    "meta"
+  ]
 }
